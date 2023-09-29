@@ -1,4 +1,4 @@
-const tempMovieData = [
+export const tempMovieData = [
   {
     imdbID: "tt1375666",
     Title: "Inception",
@@ -22,7 +22,7 @@ const tempMovieData = [
   },
 ];
 
-const tempWatchedData = [
+export const tempWatchedData = [
   {
     imdbID: "tt1375666",
     Title: "Inception",
