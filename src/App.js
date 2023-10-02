@@ -17,7 +17,7 @@ export default function App() {
 
   return (
     <>
-      {/* <Navbar>
+      <Navbar>
         <Logo />
         <Search />
         <Results movies={movies} />
@@ -25,8 +25,8 @@ export default function App() {
       <Main>
         <Box element={<MovieList movies={movies} />} />
         <Box element={<Watch watched={watched} />} />
-      </Main> */}
-      <StartRating />
+      </Main>
+      {/* <StartRating /> */}
     </>
   );
 }
