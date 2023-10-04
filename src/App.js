@@ -10,6 +10,7 @@ import { Box } from "./components/Box";
 import { MovieList } from "./components/MovieList";
 import { Watch } from "./components/Watch";
 import { StartRating } from "./components/StartRating";
+import { Expander } from "./expander/Expander";
 
 export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
@@ -26,8 +27,9 @@ export default function App() {
         <Box element={<MovieList movies={movies} />} />
         <Box element={<Watch watched={watched} />} />
       </Main> */}
-      <StartRating message={["Terrible", "Bad", "Okay", "Good", "Amazing"]} />
-      <StartRating color="pink" maxRating={10} />
+      <Expander />
+      {/* <StartRating message={["Terrible", "Bad", "Okay", "Good", "Amazing"]} /> */}
+      {/* <StartRating color="pink" maxRating={10} /> */}
     </>
   );
 }
