@@ -1,9 +1,7 @@
 import { useState } from "react";
 import "../styles.css";
 
-export const Search = () => {
-  const [query, setQuery] = useState("");
-
+export const Search = ({ query, setQuery }) => {
   return (
     <input
       className="search"
