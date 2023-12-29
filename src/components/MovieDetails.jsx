@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../styles.css";
 import { StartRating } from "./StartRating";
 import Loader from "./Loader";
@@ -7,6 +7,12 @@ export const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }
   const [movie, setMovie] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [userRating, setUserRating] = useState(null);
+  const countRef = useRef(0);
+  useEffect(() => {
+    console.log(countRef);
+    if (userRating) countRef.current = countRef.current + 1;
+  }, [userRating]);
+
   const isWatched = watched.map((movie) => movie.imdbId).includes(selectedId);
   const watchedUserRting = watched.find(
     (movie) => movie.imdbId === selectedId
@@ -58,9 +64,21 @@ export const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }
       imdbRating: Number(imdbRating),
       runtime: Number(runtime.split("").at(0)),
       userRating,
+      countRatingDecision: countRef.current,
     });
     onCloseMovie();
   };
+  useEffect(() => {
+    function callback(e) {
+      if (e.code === "Escape") {
+        onCloseMovie();
+      }
+    }
+    document.addEventListener("keydown", callback);
+    return function () {
+      document.removeEventListener("keydown", callback);
+    };
+  }, [onCloseMovie]);
 
   return (
     <div className="details">
