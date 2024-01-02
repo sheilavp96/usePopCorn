@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from "react";
 import "../styles.css";
 import { StartRating } from "./StartRating";
 import Loader from "./Loader";
+import { useKey } from "../hooks/useKey";
 
 export const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }) => {
   const [movie, setMovie] = useState({});
@@ -68,17 +69,18 @@ export const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }
     });
     onCloseMovie();
   };
-  useEffect(() => {
-    function callback(e) {
-      if (e.code === "Escape") {
-        onCloseMovie();
-      }
-    }
-    document.addEventListener("keydown", callback);
-    return function () {
-      document.removeEventListener("keydown", callback);
-    };
-  }, [onCloseMovie]);
+  useKey("Escape", onCloseMovie);
+  // useEffect(() => {
+  //   function callback(e) {
+  //     if (e.code === "Escape") {
+  //       onCloseMovie();
+  //     }
+  //   }
+  //   document.addEventListener("keydown", callback);
+  //   return function () {
+  //     document.removeEventListener("keydown", callback);
+  //   };
+  // }, [onCloseMovie]);
 
   return (
     <div className="details">
