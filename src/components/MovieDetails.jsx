@@ -35,7 +35,7 @@ export const MovieDetails = ({ selectedId, onCloseMovie, onAddWatched, watched }
       setIsLoading(true);
       if (selectedId !== "") {
         const res = await fetch(
-          `http://www.omdbapi.com/?i=${selectedId}&apikey=2dbf7c33`
+          `https://7wr88qxae0.execute-api.us-east-1.amazonaws.com/?i=${selectedId}`
         );
         if (!res.ok) {
           throw new Error("Ocurrio un error");
