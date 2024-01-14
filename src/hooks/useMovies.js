@@ -11,9 +11,12 @@ export const useMovies = (query, callback) => {
       try {
         setError("");
         setIsLoading(true);
-        const res = await fetch(`http://www.omdbapi.com/?s=${query}&apikey=2dbf7c33`, {
-          signal: controller.signal,
-        });
+        const res = await fetch(
+          `https://7wr88qxae0.execute-api.us-east-1.amazonaws.com/?s=${query}&apikey=2dbf7c33`,
+          {
+            signal: controller.signal,
+          }
+        );
         if (!res.ok) {
           throw new Error("Ocurrio un error");
         }
