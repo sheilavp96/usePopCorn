@@ -12,7 +12,7 @@ export const useMovies = (query, callback) => {
         setError("");
         setIsLoading(true);
         const res = await fetch(
-          `https://7wr88qxae0.execute-api.us-east-1.amazonaws.com/?s=${query}&apikey=2dbf7c33`,
+          `https://7wr88qxae0.execute-api.us-east-1.amazonaws.com/?s=${query}`,
           {
             signal: controller.signal,
           }
